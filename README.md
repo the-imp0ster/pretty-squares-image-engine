@@ -7,7 +7,7 @@ This Python program generates unique and vibrant square images by combining vari
 
 ##  ‧͙⁺˚*･༓☾ How It Works
 
-The image engine works by selecting random layers from four different subdirectories: TopLeft, TopRight, BottomRight, and BottomLeft.  
+The image engine works by selecting random layers from four different subdirectories.   
 It then stacks these layers together to create a square image with four colors.  
 The engine keeps track of previously used combinations, preventing duplicates.  
 
@@ -34,7 +34,7 @@ git clone https://github.com/your_username/image-engine.git
 ##  ‧͙⁺˚*･༓☾ Usage
 
 The original layers and their directory are already included for you to play with.  
-Or, you can prepare your own trait images by organizing them into four subdirectories:   TopLeft, TopRight, BottomRight, and BottomLeft, within a directory called traits, or changing these names if you like within the program to reflect your directory structure.
+Or, you can prepare your own trait images by organizing them into four subdirectories:   TopLeft, TopRight, BottomRight, and BottomLeft, within a directory called traits, or changing these names if you like within the program to reflect your four subdirectories.
 
 Run the image engine by providing the trait_directory and the number of images you want to generate (num_images) in the __main__ block:
 
