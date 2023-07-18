@@ -53,7 +53,8 @@ Open a terminal within the project folder and run the program using the command:
 python image-engine.py
 ```
 
-The generated images will be saved in a directory called "finished" within the project folder, numbered sequentially starting at 1.
+The generated images will be saved in a directory called "finished" within the project folder, numbered sequentially starting at 1.  
+A JSON metadata file is also created for each generated image, and will be saved into the same "finished" folder.
 
 ##  ‧͙⁺˚*･༓☾ Customization
 
