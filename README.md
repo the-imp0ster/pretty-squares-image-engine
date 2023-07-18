@@ -3,7 +3,7 @@
 ![image_engine](example.jpg)
 
 Welcome to my first image engine!  
-This Python program generates unique and vibrant square images by combining various layers from different trait directories (16 layers in total), and saves them to the user's local machine.
+This Python program generates unique and vibrant square images by combining various layers from different trait directories (16 layers in total), and saves them to the user's local machine.  It also generates a JSON metadata file for each generated image, and saves them to the same directory.
 
 ##  ‧͙⁺˚*･༓☾ How It Works
 
