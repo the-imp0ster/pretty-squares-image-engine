@@ -1,30 +1,31 @@
-# ‧͙⁺˚*･༓☾　Imp0ster's Colorful Squares Image Engine.　☽༓･*˚⁺‧͙
+# ‧͙⁺˚*･༓☾　Pretty Squares Image Engine.　☽༓･*˚⁺‧͙
 
 # ‧͙⁺˚*･༓☾  Imports.
 import os
 import random
+import json
 from PIL import Image
 
 # ‧͙⁺˚*･༓☾  Rouse the image engine from its slumber.
 def image_engine(trait_directory, num_images):
 
-# ‧͙⁺˚*･༓☾ Create/find a directory called Finished in the project folder to save the generated images to.
+# ‧͙⁺˚*･༓☾  Create/find a directory called Finished in the project folder to save the generated images to.
     finished_directory = "finished"
     if not os.path.exists(finished_directory):
         os.makedirs(finished_directory)
 
-# ‧͙⁺˚*･༓☾ Get the layers in each trait folder.
+# ‧͙⁺˚*･༓☾  Get the layers in each trait folder.
     top_left_layers = os.listdir(os.path.join(trait_directory, "TopLeft"))
     top_right_layers = os.listdir(os.path.join(trait_directory, "TopRight"))
     bottom_right_layers = os.listdir(os.path.join(trait_directory, "BottomRight"))
     bottom_left_layers = os.listdir(os.path.join(trait_directory, "BottomLeft"))
 
-# ‧͙⁺˚*･༓☾ Make a list of previously used combinations (so it doesn't make duplicates).
+# ‧͙⁺˚*･༓☾  Make a list of previously used combinations (so it doesn't make duplicates).
     used_combos = []
 
     for i in range(1, num_images + 1):
         while True:
-# ‧͙⁺˚*･༓☾  Select a random layer from each subdirectory
+# ‧͙⁺˚*･༓☾  Select a random layer from each subdirectory.
             top_left_layer = random.choice(top_left_layers)
             top_right_layer = random.choice(top_right_layers)
             bottom_right_layer = random.choice(bottom_right_layers)
@@ -51,16 +52,33 @@ def image_engine(trait_directory, num_images):
             combined_image = Image.alpha_composite(combined_image, bottom_left_image)
 
 # ‧͙⁺˚*･༓☾  Before saving the image, check if this combination has already been used.
-            combination = (top_left_layer, top_right_layer, bottom_right_layer, bottom_left_layer)
-            if combination not in used_combos:
+            combo = (top_left_layer, top_right_layer, bottom_right_layer, bottom_left_layer)
+            if combo not in used_combos:
                 image_filename = os.path.join(finished_directory, f"{i}.png")
                 combined_image.save(image_filename)
+
+# ‧͙⁺˚*･༓☾  Create a JSON metadata object for the pretty square.
+                metadata = {
+                    "name": f"Pretty Square #{i}",
+                    "traits": {
+                        "TopLeft": top_left_layer,
+                        "TopRight": top_right_layer,
+                        "BottomRight": bottom_right_layer,
+                        "BottomLeft": bottom_left_layer
+                    }
+                }
+
+# ‧͙⁺˚*･༓☾  Save the JSON metadata to a file (1 file for each generated image).
+                metadata_filename = os.path.join(finished_directory, f"{i}_metadata.json")
+                with open(metadata_filename, "w") as metadata_file:
+                    json.dump(metadata, metadata_file)
+
                 
-# ‧͙⁺˚*･༓☾  Add the combination to the used combinations list
-                used_combos.append(combination)
+# ‧͙⁺˚*･༓☾  Add the combination to the used combinations list.
+                used_combos.append(combo)
                 break
 
-# ‧͙⁺˚*･༓☾ Provide the trait directory and number of images desired here, then call the image_engine function.
+# ‧͙⁺˚*･༓☾  Provide the trait directory and number of images desired here, then call the image engine function.
 if __name__ == "__main__":
     trait_directory = "traits"
     num_images = 10
