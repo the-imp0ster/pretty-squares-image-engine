@@ -25,10 +25,10 @@ The engine keeps track of previously used combinations, preventing duplicates.
 pip install pillow
 ```  
 
-Clone this repo to your machine, replacing your_username in the url below with... your username.  
+Clone this repo to your machine.  
 
 ```bash
-git clone https://github.com/your_username/image-engine.git
+git clone https://github.com/the_imp0ster/pretty-squares-image-engine.git
 ```
 
 ##  ‧͙⁺˚*･༓☾ Usage
